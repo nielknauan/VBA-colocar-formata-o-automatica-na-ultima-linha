@@ -1,0 +1,39 @@
+'HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+    'Desenvolvido por: Nielk Nauan
+    'Nome da Macro: Sub Formataçãopretoebranco()
+    'Data de Desenvolvimento: 03/02/2023
+    'Função da Macro: Formatação de cor na ultima linha.
+'HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+
+Sub Formataçãopretoebranco()
+
+Dim lastRow As Long
+Dim rangeToMerge As String
+
+lastRow = ActiveSheet.Cells(ActiveSheet.Rows.Count, 1).End(xlUp).Row
+rangeToMerge = "A" & lastRow + 1 & ":N" & lastRow + 1
+
+With ActiveSheet.Range(rangeToMerge)
+    .HorizontalAlignment = xlCenter
+    .VerticalAlignment = xlCenter
+    .WrapText = False
+    .Orientation = 0
+    .AddIndent = False
+    .IndentLevel = 0
+    .ShrinkToFit = False
+    .ReadingOrder = xlContext
+    .MergeCells = False
+End With
+
+With ActiveSheet.Range(rangeToMerge).Interior
+    .Pattern = xlGray75
+    .PatternColorIndex = xlAutomatic
+    .ColorIndex = xlAutomatic
+    .TintAndShade = 0
+    .PatternTintAndShade = 0
+End With
+
+ActiveSheet.Range(rangeToMerge).Merge
+
+End Sub
+
